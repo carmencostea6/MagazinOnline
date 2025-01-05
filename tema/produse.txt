@@ -1,0 +1,14 @@
+Discuri DVD 11/12/2023 20 66.0 Sony 08/07/2013 BVB Bleeders 
+Haine Tricou 01/01/2023 50 75.0 Roz Lacoste
+Haine Geaca 15/12/2022 20 250.0 Negru Zara
+Haine Hanorac 10/10/2023 100 60.0 Albastru Adidas
+Haine Pantaloni 05/05/2023 30 120.0 Gri Nike
+Discuri Vinil 20/08/2023 10 150.0 EMI 20/08/2020  Slipknot Snuff
+Discuri CD 01/01/2023 15 50.0 Warner 01/01/2022 Metallica Load
+Discuri CD 15/09/2022 8 100.0 Sony 15/09/2019 Queen Queen1
+Discuri Vinil 25/12/2021 5 200.0 Apple 25/12/2010 Nirvana Bleach
+Vintage Vinil 10/10/1965 1 300.0 1 1
+Vintage Vinil 15/05/1970 2 250.0 0 3
+Vintage CD 20/07/1960 3 350.0 1 2
+Vintage CD 01/01/1975 4 400.0 0 4
+Vintage Vinil 11/11/2011 2 325.0 1 7
