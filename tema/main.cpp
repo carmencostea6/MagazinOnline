@@ -64,6 +64,8 @@ int main()
         cout << "MENIU PRINCIPAL" << endl;
         cout << "1. Gestionare angajati" << endl;
         cout << "2. Gestionare stoc" << endl;
+        cout << "3. Procesare comenzi"<<endl;
+        cout << "4. Raportari"<<endl;
         cout << "0. Iesire" << endl;
         cout << "Introduceti optiunea: ";
         int optiune;
@@ -236,6 +238,82 @@ int main()
                 }
             }
             while (continuaB);
+        }
+        else if (optiune == 3)
+        {
+            ifstream h("comenzi.txt");
+            if (!h)
+                cout << "Eroare: Fisierul comenzi.txt nu a putut fi deschis"<<endl;
+            else
+            {
+                try
+                {
+                    magazin.citesteComenzi(h);
+                    cout<<"________________________________________________________________________\n";
+                    magazin.procesare();
+                }
+                catch (const exception& e)
+                {
+                    cout << "Eroare: " << e.what() << endl;
+                }
+                h.close();
+            }
+
+        }
+        else if (optiune == 4)
+        {
+            cout<<"Se incarca fisierele cu raportari."<<endl;
+            bool continuaD = true;
+            do
+            {
+                cout << "RAPORTARI"<<endl;
+                cout << "1. Angajatul cu cele mai multe comenzi procesate"<<endl;
+                cout << "2. Top 3 angajati care au gestionat cele mai valoroase comenzi"<<endl;
+                cout << "3. Top 3 angajati cu cel mai mare salariu in luna curenta"<<endl;
+                cout << "0. Iesire"<<endl;
+                cout << "Introduceti optiuneaD: ";
+                int optiuneD;
+                cin >> optiuneD;
+
+                if(optiuneD==1)
+                {
+                    cout<<"Angajatul cu cele mai multe comenzi procesate a fost adaugat in fisierul topcomenzi.csv"<<endl;
+                    ofstream o1("topcomenzi.csv");
+                    magazin.celeMaiMulteComenzi(o1);
+                    o1.close();
+                }
+                else if(optiuneD==2)
+                {
+                    cout<<"Angajatii cu cele mai valoroase comenzi au fost adaugati in fisierul topvaloare.csv"<<endl;
+                    ofstream o2("topvaloare.csv");
+                    magazin.celeMaiValoroaseComenzi(o2);
+                    o2.close();
+                }
+                else if(optiuneD==3)
+                {
+                    cout<<"Angajatii cu cel mai mare salariu au fost adaugati in fisierul topsalariu.csv"<<endl;
+                    ofstream o3("topsalariu.csv");
+                    magazin.celMaiMareSalariu(o3);
+                    o3.close();
+
+                }
+                else if(optiuneD==0)
+                    continuaD=0;
+                else
+                    cout<<"Optiune invalida. Incearca din nou!"<<endl;
+
+                if (continuaD)
+                {
+                    cout << "Doriti sa continuati raportarile? (D/N): ";
+                    char raspunsD;
+                    cin >> raspunsD;
+                    if (raspunsD == 'D' || raspunsD =='d')
+                        continuaD=1;
+                    else continuaD=0;
+                }
+            }
+            while (continuaD);
+
         }
         else if (optiune == 0)
             continua = 0;  // Ieșire din meniul principal
