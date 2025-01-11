@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <queue>
 #include <algorithm>
 #include<limits>
 #pragma once
@@ -13,6 +14,10 @@
 #include "Articole_Vestimentare.h"
 #include "Discuri.h"
 #include "Discuri_Vintage.h"
+#include "Comenzi.h"
+#include <thread>
+#include <chrono>
+#include <memory>
 using namespace std;
 class Magazin
 {
@@ -26,8 +31,15 @@ class Magazin
     inline static int nrHaine=0;
     inline static int nrDiscuri=0;
     inline static int nrVintage=0;
+
+    bool alldone = 0;
+    queue<shared_ptr<Comenzi>> comenzi;
+    queue<shared_ptr<Comenzi>> comenziAsteptare;
+    bool actualizeazaStoc(const vector<shared_ptr<Produs>>& , const vector<int>& );
+    bool validareComanda(const vector<shared_ptr<Produs>>& , const vector<int>& ) const;
 public:
     Magazin()=default;
+    static string getDataCurenta();
 
     void citesteAngajati(ifstream &);
     void adaugaAngajat();
@@ -44,5 +56,17 @@ public:
     void afisareProduse() const;
 
     bool verifica() const;
+
+    Produs* cautaProdus(int cod);
+    Angajat* cautaOperator();
+    void citesteComenzi(ifstream &);
+    void adaugaComanda(const vector<shared_ptr<Produs>>& ,const vector<int>& , int , const string& );
+    void comenziInAsteptare();
+    void procesare();
+
+    void celeMaiMulteComenzi(ofstream &);
+    void celeMaiValoroaseComenzi(ofstream& );
+    void celMaiMareSalariu(ofstream &);
+
     ~Magazin();
 };
